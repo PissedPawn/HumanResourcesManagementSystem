@@ -42,9 +42,9 @@ public class JobPosting {
 	private int numberOfOpenings;
 	
 	
-//	@ManyToOne()
-//	@JoinColumn(name="city_id")
-//	private City city;
+	@ManyToOne()
+	@JoinColumn(name="city_id")
+	private City city;
 	
 	
 	@ManyToOne()
