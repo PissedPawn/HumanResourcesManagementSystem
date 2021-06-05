@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 
 import javax.persistence.Table;
 
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -19,6 +19,7 @@ import lombok.NoArgsConstructor;
 
 
 @NoArgsConstructor
+@AllArgsConstructor
 public class Applicant extends User {
 
 	
@@ -37,15 +38,15 @@ public class Applicant extends User {
 	
 	
 	
-	public Applicant(String email, String password, String passwordRepeat, String firstName, String lastName, int birthYear, String nationalId)
-	{
-		super(email, password, passwordRepeat);
-		
-		this.firstName=firstName;
-		this.lastName=lastName;
-		this.birthYear= birthYear;
-		this.nationalId=nationalId;
-	}
+//	public Applicant(String email, String password, String passwordRepeat, String firstName, String lastName, int birthYear, String nationalId)
+//	{
+//		super(email, password, passwordRepeat);
+//		
+//		this.firstName=firstName;
+//		this.lastName=lastName;
+//		this.birthYear= birthYear;
+//		this.nationalId=nationalId;
+//	}
 	
 	
 	

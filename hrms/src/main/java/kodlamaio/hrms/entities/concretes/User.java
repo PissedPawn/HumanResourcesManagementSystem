@@ -9,7 +9,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "users")
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
@@ -35,10 +36,10 @@ public class User {
 	@Column(name = "password_repeat")
 	private String passwordRepeat;
 
-	public User(String email, String password, String passwordRepeat) {
-		this.email = email;
-		this.password = password;
-		this.passwordRepeat= passwordRepeat;
-
-	}
+//	public User(String email, String password, String passwordRepeat) {
+//		this.email = email;
+//		this.password = password;
+//		this.passwordRepeat= passwordRepeat;
+//
+//	}
 }
