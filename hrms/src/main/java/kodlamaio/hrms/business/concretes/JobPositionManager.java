@@ -41,7 +41,7 @@ public class JobPositionManager implements JobPositionService {
 				 return new ErrorResult("Job Position exists");
 			 }
 		 }
-		 
+		
 		 jobPositionDao.save(jobPosition);
 		 return new SuccessResult("Job Position added");
 	}

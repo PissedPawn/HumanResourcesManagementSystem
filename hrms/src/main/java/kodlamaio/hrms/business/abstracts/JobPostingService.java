@@ -13,4 +13,7 @@ public interface JobPostingService {
 	DataResult<List<JobPosting>> getByTitle(String title);
 	
 	DataResult<List<JobPosting>> getAll();
+	
+	DataResult<List<JobPosting>> getAllSortedByStreamDate();
+	DataResult<List<JobPosting>> getByEmployer_CompanyName(String companyName);
 }

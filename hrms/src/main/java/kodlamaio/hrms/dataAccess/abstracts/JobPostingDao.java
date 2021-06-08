@@ -10,4 +10,7 @@ public interface JobPostingDao extends JpaRepository<JobPosting, Integer>{
 
 	
 	List<JobPosting> getByJobPosition_Title(String title);
+	List<JobPosting> getByEmployer_CompanyName(String companyName);
+	
+	
 }

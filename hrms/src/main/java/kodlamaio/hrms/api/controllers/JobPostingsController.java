@@ -47,5 +47,16 @@ public class JobPostingsController {
 		return jobPostingService.getAll();
 	}
 	
+	@GetMapping("/getAllSortedByDate")
+	public DataResult<List<JobPosting>> getAllSortedByStreamDate()
+	{
+		return jobPostingService.getAllSortedByStreamDate();
+	}
+	
+	@GetMapping("/getAllByCompanyName")
+	public DataResult<List<JobPosting>> getByEmployer_CompanyName(@RequestParam String companyName)
+	{
+		return jobPostingService.getByEmployer_CompanyName(companyName);
+	}
 	
 }
