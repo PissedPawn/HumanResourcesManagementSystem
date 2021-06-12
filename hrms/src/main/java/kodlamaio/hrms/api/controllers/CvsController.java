@@ -7,40 +7,35 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlamaio.hrms.business.abstracts.JobPositionService;
+import kodlamaio.hrms.business.abstracts.CvService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.JobPosition;
-
+import kodlamaio.hrms.entities.concretes.Cv;
 
 @RestController
-@RequestMapping("/api/jobPositions")
-public class JobPositionsController {
+@RequestMapping("/api/cvs")
+public class CvsController {
 
-	private JobPositionService jobPositionService;
-
-	@Autowired
-	public JobPositionsController(JobPositionService jobPositionService) {
-		super();
-		this.jobPositionService = jobPositionService;
-	}
+	private CvService cvService;
 	
-	@GetMapping("/getall")
-	public DataResult<List<JobPosition>> getAll()
+	@Autowired
+	public CvsController(CvService cvService)
 	{
-		return jobPositionService.getAll();
+		this.cvService=cvService;
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody JobPosition jobPosition)
+	public Result add(@RequestBody Cv cv)
 	{
-		return jobPositionService.add(jobPosition);
+		return cvService.add(cv);
 	}
 	
+	@GetMapping("/getAll")
+	public DataResult<List<Cv>> getAll()
+	{
+		return cvService.getAll();
+	}
 	
-
-
 }

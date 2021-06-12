@@ -34,7 +34,7 @@ public class JobPosting {
 	
 	
 	@Column(name="job_requirements")
-	private String jobReqirements;
+	private String jobRequirements;
 	
 	@Column(name="salary_min")
 	private int salaryMin;
@@ -51,15 +51,17 @@ public class JobPosting {
 	@Column(name="stream_date")
 	private LocalDate streamDate;
 	
+	@ManyToOne()
+	@JoinColumn(name="job_position_id")
+	private JobPosition jobPosition;
+	
 	
 	@ManyToOne()
 	@JoinColumn(name="city_id")
 	private City city;
 	
 	
-	@ManyToOne()
-	@JoinColumn(name="job_position_id")
-	private JobPosition jobPosition;
+	
 	
 	@ManyToOne()
 	@JoinColumn(name= "employer_id")

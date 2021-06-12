@@ -15,6 +15,7 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.JobPostingDao;
 import kodlamaio.hrms.entities.concretes.JobPosting;
+import kodlamaio.hrms.entities.dtos.JobPostingWithJobPositionCityEmployerDto;
 
 
 @Service
@@ -56,6 +57,11 @@ public class JobPostingManager implements JobPostingService {
 	public DataResult<List<JobPosting>> getByEmployer_CompanyName(String companyName) {
 		// TODO Auto-generated method stub
 		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.getByEmployer_CompanyName(companyName));
+	}
+	@Override
+	public DataResult<List<JobPostingWithJobPositionCityEmployerDto>> getJobPostings() {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<List<JobPostingWithJobPositionCityEmployerDto>>(this.jobPostingDao.getJobPostingWithDetails());
 	}
 
 }

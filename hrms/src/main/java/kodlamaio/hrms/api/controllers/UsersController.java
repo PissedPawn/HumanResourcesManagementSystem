@@ -29,4 +29,6 @@ public class UsersController {
 	{
 		return userService.getAll();
 	}
+	
+	
 }

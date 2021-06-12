@@ -7,40 +7,36 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlamaio.hrms.business.abstracts.JobPositionService;
+import kodlamaio.hrms.business.abstracts.UniversityService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.JobPosition;
-
+import kodlamaio.hrms.entities.concretes.University;
 
 @RestController
-@RequestMapping("/api/jobPositions")
-public class JobPositionsController {
+@RequestMapping("/api/universities")
+public class UniversitiesController {
 
-	private JobPositionService jobPositionService;
-
+	private UniversityService universityService;
 	@Autowired
-	public JobPositionsController(JobPositionService jobPositionService) {
+	public UniversitiesController(UniversityService universityService)
+	{
 		super();
-		this.jobPositionService = jobPositionService;
+		this.universityService=universityService;
 	}
 	
-	@GetMapping("/getall")
-	public DataResult<List<JobPosition>> getAll()
-	{
-		return jobPositionService.getAll();
-	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody JobPosition jobPosition)
+	public Result add(@RequestBody University university)
 	{
-		return jobPositionService.add(jobPosition);
+		return universityService.add(university);
 	}
 	
+	@GetMapping("/getAll")
+	public DataResult<List<University>> getAll()
+	{
+		return universityService.getAll();
+	}
 	
-
-
 }

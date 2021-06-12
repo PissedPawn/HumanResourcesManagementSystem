@@ -43,9 +43,6 @@ public class EmployerManager implements EmployerService {
 			return new ErrorResult("Fill in blanks");
 		}
 
-		if (!emailCheckService.ifEmailIsValid(employer.getEmail())) {
-			return new ErrorResult("Enter a valid email");
-		}
 		
 		if(!checkIfEmailMatchesDomain(employer.getWebsite(),employer.getEmail()))
 				{
