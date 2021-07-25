@@ -12,4 +12,5 @@ public interface ApplicantService {
 
 	DataResult<List<Applicant>> getAll();
 	Result add(Applicant applicant);
+	DataResult<Applicant> getById(int id);
 }

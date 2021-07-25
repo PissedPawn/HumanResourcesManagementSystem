@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -23,10 +25,10 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobPostings"})
-@PrimaryKeyJoinColumn(name="employer_id", referencedColumnName = "id")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "jobPostings" })
+@PrimaryKeyJoinColumn(name = "employer_id", referencedColumnName = "id")
 public class Employer extends User {
-	
+
 	@Column(name = "company_name")
 	private String companyName;
 
@@ -35,18 +37,12 @@ public class Employer extends User {
 
 	@Column(name = "phone_number")
 	private String phoneNumber;
-	
-	@OneToMany(mappedBy="employer")
+
+	@OneToMany(mappedBy = "employer")
 	private List<JobPosting> jobPostings;
-	
-	
-//	public Employer(String email, String password, String passwordRepeat, 
-//			String companyName, String website,String phoneNumber)
-//	{
-//		super(email, password, passwordRepeat);
-//		this.companyName=companyName;
-//		this.website=website;
-//		this.phoneNumber=phoneNumber;
-//	
-//		}
+
+	@ManyToOne()
+	@JoinColumn(name = "city_id")
+	private City city;
+
 }

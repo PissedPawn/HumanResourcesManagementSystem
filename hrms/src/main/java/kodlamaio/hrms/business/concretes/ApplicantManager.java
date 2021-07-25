@@ -30,20 +30,24 @@ public class ApplicantManager implements ApplicantService {
 		this.emailCheckService = emailCheckService;
 		this.identityCheckService = identityCheckService;
 	}
-	
-	
 
 	@Override
 	public DataResult<List<Applicant>> getAll() {
 		// TODO Auto-generated method stub
 		return new SuccessDataResult<List<Applicant>>(applicantDao.findAll(), "Listed");
 	}
+	
+	@Override
+	
+	public DataResult<Applicant> getById(int id)
+	{
+		return new SuccessDataResult<Applicant>(applicantDao.getById(id));
+	}
 
 	@Override
 	public Result add(Applicant applicant) {
-		if (applicant.getFirstName() == null || applicant.getLastName() == null || applicant.getBirthYear() == 0
-				|| applicant.getEmail() == null || applicant.getPassword() == null
-				|| applicant.getPasswordRepeat() == null) {
+		if (applicant.getFirstName() == "" || applicant.getLastName() == "" || applicant.getBirthYear() == 0
+				|| applicant.getEmail() == "" || applicant.getPassword() == "" || applicant.getPasswordRepeat() == "") {
 			return new ErrorResult("Fill in blanks");
 		}
 
@@ -54,25 +58,22 @@ public class ApplicantManager implements ApplicantService {
 		if (!applicant.getPassword().equals(applicant.getPasswordRepeat())) {
 			return new ErrorResult("Passwords don`t match");
 		}
-		
-		if(!identityCheckService.checkIfRealPerson(applicant))
-		{
+
+		if (!identityCheckService.checkIfRealPerson(applicant)) {
 			return new ErrorResult("Not a real person");
 		}
-		
-		for(Applicant user: applicantDao.findAll())
-		{
-			if(user.getEmail().equals(applicant.getEmail()))
+
+		for (Applicant user : applicantDao.findAll()) {
+			if (user.getEmail().equals(applicant.getEmail()))
 				return new ErrorResult("Email has been used");
-			
-			if(user.getNationalId().equals(applicant.getNationalId()))
-			return new ErrorResult("Id has been used");
-	
+
+			if (user.getNationalId().equals(applicant.getNationalId()))
+				return new ErrorResult("Id has been used");
+
 		}
-		
-		
+
 		applicantDao.save(applicant);
-	
+
 		return new SuccessResult("Added");
 	}
 

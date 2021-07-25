@@ -6,4 +6,5 @@ import kodlamaio.hrms.entities.concretes.Applicant;
 
 public interface ApplicantDao extends JpaRepository<Applicant, Integer> {
 
+	Applicant getById(int id);
 }

@@ -37,13 +37,17 @@ public class EmployerManager implements EmployerService {
 
 	@Override
 	public Result add(Employer employer) {
-		if (employer.getCompanyName() == null || employer.getWebsite() == null || employer.getPhoneNumber() == null
-				|| employer.getEmail() == null || employer.getPassword() == null
-				|| employer.getPasswordRepeat() == null) {
+
+		if (employer.getCompanyName() == "" || employer.getWebsite() == "" || employer.getPhoneNumber() == ""
+				|| employer.getEmail() == "" || employer.getPassword() == "" || employer.getPasswordRepeat() == "") {
 			return new ErrorResult("Fill in blanks");
 		}
-
 		
+		
+		if (!emailCheckService.ifEmailIsValid(employer.getEmail())) {
+			return new ErrorResult("Enter a valid email");
+		}
+
 		if(!checkIfEmailMatchesDomain(employer.getWebsite(),employer.getEmail()))
 				{
 			          	return new ErrorResult("Email and Website doesn't match");
@@ -52,27 +56,22 @@ public class EmployerManager implements EmployerService {
 		if (!employer.getPassword().equals(employer.getPasswordRepeat())) {
 			return new ErrorResult("Passwords don`t match");
 		}
-		
-	
-		
-		for(Employer user: employerDao.findAll())
-		{
-			if(user.getEmail().equals(employer.getEmail()))
+
+		for (Employer user : employerDao.findAll()) {
+			if (user.getEmail().equals(employer.getEmail()))
 				return new ErrorResult("Email has been used");
-			
-	
+
 		}
-		
-		
+
 		employerDao.save(employer);
-	
+
 		return new SuccessResult("Added");
 	}
 
 	private boolean checkIfEmailMatchesDomain(String domain, String email) {
 
 		email = (email.split("@")[1]).toLowerCase();
-		
+
 		domain = domain.toLowerCase();
 
 		if (!domain.equals(email)) {
@@ -80,6 +79,12 @@ public class EmployerManager implements EmployerService {
 		}
 		return true;
 
+	}
+
+	@Override
+	public DataResult<Employer> getById(int id) {
+
+		return new SuccessDataResult<Employer>(employerDao.getById(id));
 	}
 
 }

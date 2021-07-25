@@ -13,6 +13,7 @@ import kodlamaio.hrms.business.abstracts.CvService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.Cv;
+import kodlamaio.hrms.entities.dtos.CvDto;
 
 @RestController
 @RequestMapping("/api/cvs")
@@ -36,6 +37,12 @@ public class CvsController {
 	public DataResult<List<Cv>> getAll()
 	{
 		return cvService.getAll();
+	}
+	
+	@GetMapping("/getAllDtos")
+	public DataResult<List<CvDto>> getAllDtos()
+	{
+		return cvService.getAllCvDtos();
 	}
 	
 }

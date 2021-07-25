@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "city", "jobPosition","employer"})
+
 
 public class JobPosting {
 
@@ -30,8 +30,6 @@ public class JobPosting {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
-	
-	
 	
 	@Column(name="job_requirements")
 	private String jobRequirements;
@@ -50,6 +48,12 @@ public class JobPosting {
 	
 	@Column(name="stream_date")
 	private LocalDate streamDate;
+
+	@Column(name="work_condition")
+	private String workCondition;
+	
+	@Column(name="part_time")
+	private boolean partTime;
 	
 	@ManyToOne()
 	@JoinColumn(name="job_position_id")
@@ -59,17 +63,9 @@ public class JobPosting {
 	@ManyToOne()
 	@JoinColumn(name="city_id")
 	private City city;
-	
-	
-	
-	
+
 	@ManyToOne()
 	@JoinColumn(name= "employer_id")
 	private Employer employer;
-	
-	
-	
-	
-	
-	
+
 }

@@ -12,6 +12,7 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.CvDao;
 import kodlamaio.hrms.entities.concretes.Cv;
+import kodlamaio.hrms.entities.dtos.CvDto;
 
 @Service
 public class CvManager implements CvService {
@@ -34,6 +35,11 @@ public class CvManager implements CvService {
 	public DataResult<List<Cv>> getAll() {
 		// TODO Auto-generated method stub
 		return new SuccessDataResult<List<Cv>>(cvDao.findAll());
+	}
+	@Override
+	public DataResult<List<CvDto>> getAllCvDtos() {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<List<CvDto>>(cvDao.getCvDtos());
 	}
 
 }
