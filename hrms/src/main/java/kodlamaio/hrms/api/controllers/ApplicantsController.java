@@ -3,6 +3,7 @@ package kodlamaio.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +31,7 @@ public class ApplicantsController {
 	}
 
 	@GetMapping("/getall")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_APPLICANT')")
 	public DataResult<List<Applicant>> getAll() {
 		return applicantService.getAll();
 
@@ -37,12 +39,14 @@ public class ApplicantsController {
 	
 	
 	@GetMapping("/getbyId")
+	@PreAuthorize("hasAnyRole('ROLE_EMPLOYER', 'ROLE_ADMIN', 'ROLE_APPLICANT')")
 	public DataResult<Applicant> getbyId(@RequestParam int id) {
 		return applicantService.getById(id);
 
 	}
 	
 	@PostMapping("/add")
+	@PreAuthorize("hasAuthority('applicant:write')")
 	public Result add(@RequestBody Applicant applicant) {
 		
 		return applicantService.add(applicant);
