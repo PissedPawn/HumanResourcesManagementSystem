@@ -17,6 +17,7 @@ import kodlamaio.hrms.entities.concretes.User;
 @Service
 
 public class UserManager implements UserService {
+	
 	private UserDao userDao;
 	private PasswordEncoder passwordEncoder;
 
