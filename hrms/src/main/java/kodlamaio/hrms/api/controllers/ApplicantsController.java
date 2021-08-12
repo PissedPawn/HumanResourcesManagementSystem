@@ -31,7 +31,7 @@ public class ApplicantsController {
 	}
 
 	@GetMapping("/getall")
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_APPLICANT')")
+//	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_APPLICANT')")
 	public DataResult<List<Applicant>> getAll() {
 		return applicantService.getAll();
 
@@ -39,14 +39,14 @@ public class ApplicantsController {
 	
 	
 	@GetMapping("/getbyId")
-	@PreAuthorize("hasAnyRole('ROLE_EMPLOYER', 'ROLE_ADMIN', 'ROLE_APPLICANT')")
+//	@PreAuthorize("hasAnyRole('ROLE_EMPLOYER', 'ROLE_ADMIN', 'ROLE_APPLICANT')")
 	public DataResult<Applicant> getbyId(@RequestParam int id) {
 		return applicantService.getById(id);
 
 	}
 	
 	@PostMapping("/add")
-	@PreAuthorize("hasAuthority('applicant:write')")
+//	@PreAuthorize("hasAuthority('applicant:write')")
 	public Result add(@RequestBody Applicant applicant) {
 		
 		return applicantService.add(applicant);
