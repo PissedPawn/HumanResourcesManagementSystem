@@ -1,11 +1,14 @@
 package kodlamaio.hrms.entities.concretes;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 public class MyUserDetails implements UserDetails {
 
@@ -15,6 +18,7 @@ public class MyUserDetails implements UserDetails {
 	private Boolean isAccountNonLocked;
 	private Boolean isCredentialsNonExpired;
 	private Boolean isEnabled;
+	private List<GrantedAuthority> authorities;
 
 	
 	
@@ -24,6 +28,7 @@ public class MyUserDetails implements UserDetails {
 		this.username = user.getUserName();
 		this.password = user.getPassword();
 		this.isEnabled = user.getActive();
+		this.authorities= Arrays.stream(user.getRoles().split(",")).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
 	}
 
 	public MyUserDetails() {
@@ -33,7 +38,7 @@ public class MyUserDetails implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
-		return null;
+		return authorities;
 	}
 
 	@Override

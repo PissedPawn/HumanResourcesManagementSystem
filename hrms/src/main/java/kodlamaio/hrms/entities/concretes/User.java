@@ -57,6 +57,9 @@ public class User {
 	
 	@Column(name = "active")
 	private Boolean active;
+	
+	@Column(name = "roles")
+	private String roles;
 
 	
 
