@@ -61,12 +61,4 @@ public class User {
 	@Column(name = "roles")
 	private String roles;
 
-	
-
-//	public User(String email, String password, String passwordRepeat) {
-//		this.email = email;
-//		this.password = password;
-//		this.passwordRepeat= passwordRepeat;
-//
-//	}
 }

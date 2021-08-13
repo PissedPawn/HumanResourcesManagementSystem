@@ -35,8 +35,5 @@ public class Applicant extends User {
 	@Column(name = "national_identity_no")
 	private String nationalId;
 
-	
-
-
-
+	private String roles;
 }
