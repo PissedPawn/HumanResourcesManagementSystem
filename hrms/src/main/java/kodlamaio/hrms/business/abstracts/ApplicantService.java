@@ -10,7 +10,7 @@ import kodlamaio.hrms.entities.concretes.Applicant;
 
 public interface ApplicantService {
 
-	DataResult<List<Applicant>> getAll();
+	DataResult<List<Applicant>> getAll();// saaa
 	Result add(Applicant applicant);
 	DataResult<Applicant> getById(int id);    
 }   
