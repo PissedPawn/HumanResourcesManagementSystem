@@ -40,39 +40,39 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 	}
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		
-
-		http
-
-//				.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-//				.and()
-		        .csrf().disable()
-				.authorizeRequests()
-				
-				.antMatchers("/").permitAll()
-
-				.anyRequest().authenticated().and().formLogin()
-			    .loginPage("/login").permitAll()
-			    .defaultSuccessUrl("/applicants", true)
-			    .and().rememberMe().tokenValiditySeconds((int)TimeUnit.DAYS.toSeconds(21)).key("blahblahblah")
-			    .and()
-			    .logout()
-			    .logoutUrl("/logout")
-			    .clearAuthentication(true)
-			    .invalidateHttpSession(true)
-				.deleteCookies("JSESSIONID", "remember-me")
-				.logoutSuccessUrl("/login");
-
-	}
-	
-	
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		// TODO Auto-generated method stub
-		auth.userDetailsService(userDetailsService);
-	}
+//	@Override
+//	protected void configure(HttpSecurity http) throws Exception {
+//		
+//
+//		http
+//
+////				.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+////				.and()
+//		        .csrf().disable()
+//				.authorizeRequests()
+//				
+//				.antMatchers("/").permitAll()
+//
+//				.anyRequest().authenticated().and().formLogin()
+//			    .loginPage("/login").permitAll()
+//			    .defaultSuccessUrl("/applicants", true)
+//			    .and().rememberMe().tokenValiditySeconds((int)TimeUnit.DAYS.toSeconds(21)).key("blahblahblah")
+//			    .and()
+//			    .logout()
+//			    .logoutUrl("/logout")
+//			    .clearAuthentication(true)
+//			    .invalidateHttpSession(true)
+//				.deleteCookies("JSESSIONID", "remember-me")
+//				.logoutSuccessUrl("/login");
+//
+//	}
+//	
+//	
+//	@Override
+//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//		// TODO Auto-generated method stub
+//		auth.userDetailsService(userDetailsService);
+//	}
 	
 	
 
