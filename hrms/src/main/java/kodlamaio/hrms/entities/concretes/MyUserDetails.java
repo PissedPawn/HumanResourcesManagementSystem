@@ -25,10 +25,10 @@ public class MyUserDetails implements UserDetails {
 	
 	public MyUserDetails(User user) {
 
-		this.username = user.getUserName();
+		//this.username = user.getUserName();
 		this.password = user.getPassword();
-		this.isEnabled = user.getActive();
-		this.authorities= Arrays.stream(user.getRoles().split(",")).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+		//this.isEnabled = user.getActive();
+		//this.authorities= Arrays.stream(user.getRoles().split(",")).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
 	}
 
 	public MyUserDetails() {

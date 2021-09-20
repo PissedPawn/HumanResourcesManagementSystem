@@ -40,10 +40,6 @@ public class User {
 	@Column(name = "email")
 	private String email;
 	
-	@NotBlank
-	@NotNull
-	@Column(name = "username")
-	private String userName;
 
 	@NotBlank
 	@NotNull
@@ -54,11 +50,5 @@ public class User {
 	@NotNull
 	@Column(name = "password_repeat")
 	private String passwordRepeat;
-	
-	@Column(name = "active")
-	private Boolean active;
-	
-	@Column(name = "roles")
-	private String roles;
-
+		
 }
