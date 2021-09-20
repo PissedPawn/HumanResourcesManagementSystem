@@ -19,7 +19,7 @@ import kodlamaio.hrms.entities.concretes.Applicant;
 @Service
 public class ApplicantManager implements ApplicantService {
 	
-	final String ROLE_APPLICANT= "ROLE_APPLICANT";
+	//final String ROLE_APPLICANT= "ROLE_APPLICANT";
 
 	private ApplicantDao applicantDao;
 	private EmailCheckServiceBase emailCheckService;
@@ -36,7 +36,7 @@ public class ApplicantManager implements ApplicantService {
 	@Override
 	public DataResult<List<Applicant>> getAll() {
 		// TODO Auto-generated method stub
-		return new SuccessDataResult<List<Applicant>>(applicantDao.findAll(), "Listed");
+		return new SuccessDataResult<List<Applicant>>(applicantDao.findAll());
 	}
 	
 	@Override
@@ -74,7 +74,7 @@ public class ApplicantManager implements ApplicantService {
 
 		}
 		
-		applicant.setRoles(ROLE_APPLICANT);
+		//applicant.setRoles(ROLE_APPLICANT);
 
 		applicantDao.save(applicant);
 
