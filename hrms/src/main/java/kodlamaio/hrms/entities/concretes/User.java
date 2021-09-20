@@ -40,7 +40,6 @@ public class User {
 	@Column(name = "email")
 	private String email;
 	
-
 	@NotBlank
 	@NotNull
 	@Column(name = "password")

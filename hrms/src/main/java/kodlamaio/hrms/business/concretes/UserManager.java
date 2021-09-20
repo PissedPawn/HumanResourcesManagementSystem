@@ -19,13 +19,13 @@ import kodlamaio.hrms.entities.concretes.User;
 public class UserManager implements UserService {
 	
 	private UserDao userDao;
-	private PasswordEncoder passwordEncoder;
+	
 
 	@Autowired
-	public UserManager(UserDao userDao,  PasswordEncoder passwordEncoder) {
+	public UserManager(UserDao userDao) {
 		super();
 		this.userDao = userDao;
-		this.passwordEncoder=passwordEncoder;
+		
 	}
 
 	@Override
@@ -33,12 +33,5 @@ public class UserManager implements UserService {
 		return new SuccessDataResult<List<User>>(userDao.findAll());
 	}
 
-	@Override
-	public UserDetails loadUserByUsername(String username) {
-
-		Optional<User> user = userDao.findByUserName(username);
-		user.get().setPassword(passwordEncoder.encode(user.get().getPassword()));
-		
-		return user.map(MyUserDetails::new).get();
-	}
+	
 }
