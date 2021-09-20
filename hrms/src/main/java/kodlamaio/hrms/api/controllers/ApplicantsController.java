@@ -25,7 +25,6 @@ public class ApplicantsController {
 
 	@Autowired
 	public ApplicantsController(ApplicantService applicantService) {
-		super();
 		this.applicantService = applicantService;
 	}
 
