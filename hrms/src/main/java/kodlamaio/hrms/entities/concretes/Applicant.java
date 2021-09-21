@@ -21,8 +21,6 @@ import lombok.NoArgsConstructor;
 @PrimaryKeyJoinColumn(name = "applicant_id", referencedColumnName = "id")
 public class Applicant extends User {
 
-	
-
 	@Column(name = "first_name")
 	private String firstName;
 
