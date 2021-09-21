@@ -18,7 +18,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Table(name = "applicants")
-@PrimaryKeyJoinColumn(name = "applicant_id", referencedColumnName = "id")
 public class Applicant extends User {
 
 	
