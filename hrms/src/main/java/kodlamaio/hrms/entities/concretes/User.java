@@ -18,13 +18,16 @@ import javax.validation.constraints.NotBlank;
 
 import com.sun.istack.NotNull;
 
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Data
 @Entity
 @Table(name = "users")
+@NoArgsConstructor
+@AllArgsConstructor
 
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
