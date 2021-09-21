@@ -1,6 +1,6 @@
 package kodlamaio.hrms.entities.concretes;
 
-import java.util.Collection;
+
 import java.util.List;
 
 import javax.persistence.Column;
