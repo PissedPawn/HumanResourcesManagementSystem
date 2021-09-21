@@ -19,7 +19,7 @@ import kodlamaio.hrms.entities.concretes.Applicant;
 @Service
 public class ApplicantManager implements ApplicantService {
 	
-	//final String ROLE_APPLICANT= "ROLE_APPLICANT";
+	
 
 	private ApplicantDao applicantDao;
 	private EmailCheckServiceBase emailCheckService;
@@ -74,7 +74,7 @@ public class ApplicantManager implements ApplicantService {
 
 		}
 		
-		//applicant.setRoles(ROLE_APPLICANT);
+	
 
 		applicantDao.save(applicant);
 
