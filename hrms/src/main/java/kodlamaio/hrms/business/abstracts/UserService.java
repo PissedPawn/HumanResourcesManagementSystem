@@ -12,5 +12,4 @@ public interface UserService {
 
 	DataResult<List<User>> getAll();
 
-
 }
